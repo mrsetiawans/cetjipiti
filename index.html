@@ -32,32 +32,54 @@
 
     <style>
         :root {
-            --google-blue-600: #1a73e8;
-            --google-blue-700: #1557b0;
-            --google-blue-50: #e8f0fe;
-            --google-grey-50: #f8f9fa;
-            --google-grey-100: #f1f3f4;
-            --google-grey-200: #e8eaed;
-            --google-grey-300: #dadce0;
-            --google-grey-500: #9aa0a6;
-            --google-grey-600: #5f6368;
-            --google-grey-700: #3c4043;
-            --google-grey-900: #202124;
-            --google-green-600: #137333;
-            --google-red-600: #d93025;
-            --google-yellow-600: #f9ab00;
-            --google-purple-600: #9334e6;
-            --shadow-1: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
-            --shadow-2: 0 1px 2px 0 rgba(60,64,67,.3), 0 2px 6px 2px rgba(60,64,67,.15);
-            --shadow-3: 0 4px 8px 3px rgba(60,64,67,.15), 0 1px 3px rgba(60,64,67,.3);
+            /* Material 3 Color Palette */
+            --m3-primary: #0b57d0;
+            --m3-on-primary: #ffffff;
+            --m3-primary-container: #d3e3ff;
+            --m3-on-primary-container: #001849;
+            --m3-secondary: #565f71;
+            --m3-on-secondary: #ffffff;
+            --m3-secondary-container: #dae2f9;
+            --m3-on-secondary-container: #131c2b;
+            --m3-tertiary: #715573;
+            --m3-on-tertiary: #ffffff;
+            --m3-tertiary-container: #fbd7fc;
+            --m3-on-tertiary-container: #29132d;
+            --m3-error: #b3261e;
+            --m3-on-error: #ffffff;
+            --m3-error-container: #f9dedc;
+            --m3-on-error-container: #410e0b;
+            --m3-background: #fef7ff;
+            --m3-on-background: #1c1b1f;
+            --m3-surface: #fef7ff;
+            --m3-on-surface: #1c1b1f;
+            --m3-surface-variant: #e1e2ec;
+            --m3-on-surface-variant: #44474f;
+            --m3-outline: #74777f;
+            --m3-outline-variant: #c4c6d0;
+            --m3-shadow: #000000;
+            --m3-inverse-surface: #313033;
+            --m3-inverse-on-surface: #f3eff4;
+            --m3-inverse-primary: #a8c7fa;
+
+            /* Custom Google Colors */
+            --google-blue: #4285F4;
+            --google-green: #34A853;
+            --google-yellow: #FBBC05;
+            --google-red: #EA4335;
+
+            /* Material 3 Shadows (Elevation) */
+            --shadow-1: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+            --shadow-2: 0px 2px 4px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+            --shadow-3: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         /* Google Sans Typography */
         body {
             font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--google-grey-50);
-            color: var(--google-grey-700);
-            line-height: 1.5;
+            background-color: var(--m3-background);
+            color: var(--m3-on-background);
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -68,11 +90,11 @@
 
         /* Enhanced Material Design Components */
         .material-card {
-            background: #ffffff;
-            border-radius: 12px;
+            background: var(--m3-surface);
+            border-radius: 16px; /* M3 uses larger radii */
             box-shadow: var(--shadow-1);
             transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid var(--google-grey-200);
+            border: 1px solid var(--m3-outline-variant);
         }
 
         .material-card:hover {
@@ -85,34 +107,34 @@
 
         /* Enhanced Form Inputs */
         .form-input {
-            border: 2px solid var(--google-grey-300);
+            border: 1px solid var(--m3-outline); /* M3 uses 1px border */
             transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
             border-radius: 8px;
-            padding: 14px 12px; /* Reduced padding */
+            padding: 14px 16px;
             width: 100%;
-            background-color: #ffffff;
+            background-color: var(--m3-surface);
             font-size: 16px;
             font-family: 'Roboto', sans-serif;
-            color: var(--google-grey-900);
+            color: var(--m3-on-surface);
         }
 
         .form-input:focus {
-            border-color: var(--google-blue-600);
-            background-color: #ffffff;
+            border-color: var(--m3-primary);
+            background-color: var(--m3-surface);
             outline: none;
-            box-shadow: 0 0 0 1px var(--google-blue-600);
+            box-shadow: 0 0 0 1px var(--m3-primary); /* Use a softer focus ring */
         }
 
         .form-input::placeholder {
-            color: var(--google-grey-500);
+            color: var(--m3-on-surface-variant);
         }
 
         /* Enhanced Google-style Buttons */
         .cta-button {
             transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
             border-radius: 24px;
-            padding: 12px 28px; /* Reduced padding */
-            font-size: 15px; /* Slightly smaller font */
+            padding: 12px 28px;
+            font-size: 15px;
             font-weight: 500;
             font-family: 'Google Sans', sans-serif;
             display: inline-flex;
@@ -124,17 +146,17 @@
             border: none;
             text-transform: none;
             letter-spacing: 0.25px;
-            min-height: 46px; /* Reduced height */
+            min-height: 48px; /* M3 standard height */
         }
 
         .blue-button {
-            background-color: var(--google-blue-600);
-            color: white;
+            background-color: var(--m3-primary);
+            color: var(--m3-on-primary);
             box-shadow: var(--shadow-1);
         }
 
         .blue-button:hover {
-            background-color: var(--google-blue-700);
+            background-color: #0a4ab5; /* Darker primary for hover */
             box-shadow: var(--shadow-2);
             transform: translateY(-1px);
         }
@@ -145,8 +167,8 @@
         }
 
         .cta-button:disabled {
-            background-color: var(--google-grey-300);
-            color: var(--google-grey-500);
+            background-color: var(--m3-surface-variant);
+            color: var(--m3-on-surface-variant);
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
@@ -168,12 +190,12 @@
         }
 
         .modal-content {
-            background-color: #ffffff;
+            background-color: var(--m3-surface);
             margin: auto;
-            padding: 28px; /* Reduced padding */
+            padding: 24px;
             width: 90%;
             max-width: 480px;
-            border-radius: 16px;
+            border-radius: 28px; /* M3 Dialog radius */
             box-shadow: var(--shadow-3);
             text-align: center;
             position: relative;
@@ -192,24 +214,24 @@
         }
 
         .modal-content h3 {
-            color: var(--google-grey-900);
-            margin-bottom: 12px; /* Reduced margin */
-            font-size: 18px; /* Reduced font size */
+            color: var(--m3-on-surface);
+            margin-bottom: 16px;
+            font-size: 20px;
             font-weight: 500;
             font-family: 'Google Sans', sans-serif;
         }
 
         .modal-content p {
-            color: var(--google-grey-600);
-            margin-bottom: 20px; /* Reduced margin */
+            color: var(--m3-on-surface-variant);
+            margin-bottom: 24px;
             line-height: 1.6;
             font-size: 14px;
         }
 
         .modal-ok-button {
-            background-color: var(--google-blue-600);
-            color: white;
-            padding: 10px 28px; /* Reduced padding */
+            background-color: var(--m3-primary);
+            color: var(--m3-on-primary);
+            padding: 10px 24px;
             border: none;
             border-radius: 24px;
             cursor: pointer;
@@ -217,11 +239,11 @@
             font-weight: 500;
             font-family: 'Google Sans', sans-serif;
             transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-            min-height: 36px;
+            min-height: 40px;
         }
 
         .modal-ok-button:hover {
-            background-color: var(--google-blue-700);
+            background-color: #0a4ab5;
             box-shadow: var(--shadow-1);
         }
 
@@ -229,7 +251,7 @@
         .testimonial-image {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
-            border-radius: 12px;
+            border-radius: 16px; /* Match card radius */
             overflow: hidden;
         }
 
@@ -244,9 +266,9 @@
             top: 24px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: var(--google-grey-900);
-            color: #ffffff;
-            border-radius: 8px;
+            background-color: var(--m3-inverse-surface);
+            color: var(--m3-inverse-on-surface);
+            border-radius: 12px;
             box-shadow: var(--shadow-3);
             padding: 16px 24px;
             display: none;
@@ -286,7 +308,7 @@
         }
 
         .notif-icon-wrapper {
-            color: var(--google-green-600);
+            color: var(--google-green);
             font-size: 20px;
             flex-shrink: 0;
         }
@@ -308,7 +330,7 @@
 
         /* Enhanced FAQ Section */
         .faq-item {
-            border-bottom: 1px solid var(--google-grey-200);
+            border-bottom: 1px solid var(--m3-outline-variant);
             transition: background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -317,14 +339,14 @@
         }
 
         .faq-item:hover {
-            background-color: var(--google-grey-50);
+            background-color: var(--m3-surface-variant);
         }
 
         .faq-item summary {
             font-weight: 500;
-            font-size: 15px; /* Reduced font size */
-            color: var(--google-grey-900);
-            padding: 16px 12px; /* Reduced padding */
+            font-size: 15px;
+            color: var(--m3-on-surface);
+            padding: 16px 12px;
             cursor: pointer;
             list-style: none;
             display: flex;
@@ -342,7 +364,7 @@
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            color: var(--google-grey-600);
+            color: var(--m3-on-surface-variant);
             font-size: 14px;
         }
 
@@ -351,25 +373,25 @@
         }
 
         .faq-content {
-            padding: 0 12px 16px 12px; /* Reduced padding */
-            color: var(--google-grey-600);
+            padding: 0 12px 16px 12px;
+            color: var(--m3-on-surface-variant);
             line-height: 1.6;
             font-size: 14px;
         }
 
         .faq-item[open] summary {
-            color: var(--google-blue-600);
+            color: var(--m3-primary);
         }
 
         /* Enhanced Segmented Control */
         .segmented-control {
             display: flex;
             position: relative;
-            background-color: var(--google-grey-100);
-            border-radius: 12px;
+            background-color: var(--m3-surface-variant);
+            border-radius: 16px;
             padding: 4px;
             width: 100%;
-            box-shadow: inset 0 1px 2px rgba(60, 64, 67, 0.1);
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .segmented-control .package-radio {
@@ -382,20 +404,20 @@
         .segmented-control .package-label {
             flex: 1;
             text-align: center;
-            padding: 10px 8px; /* Reduced padding */
+            padding: 10px 8px;
             cursor: pointer;
             z-index: 2;
             transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            color: var(--google-grey-700);
-            font-size: 13px; /* Reduced font size */
+            color: var(--m3-on-surface-variant);
+            font-size: 13px;
             font-weight: 500;
             line-height: 1.2;
             font-family: 'Google Sans', sans-serif;
-            border-radius: 8px;
+            border-radius: 12px;
         }
 
         .segmented-control .package-radio:checked + .package-label {
-            color: var(--google-blue-600);
+            color: var(--m3-on-secondary-container);
         }
 
         .segmented-control-pill {
@@ -403,8 +425,8 @@
             top: 4px;
             bottom: 4px;
             width: calc((100% - 8px) / 3);
-            background-color: #ffffff;
-            border-radius: 8px;
+            background-color: var(--m3-secondary-container);
+            border-radius: 12px;
             box-shadow: var(--shadow-1);
             z-index: 1;
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -429,10 +451,10 @@
         }
 
         .product-info-card {
-            background: linear-gradient(135deg, var(--google-blue-50) 0%, #ffffff 100%);
-            border: 1px solid var(--google-grey-200);
-            border-radius: 16px;
-            padding: 20px; /* Reduced padding */
+            background: linear-gradient(135deg, var(--m3-primary-container) 0%, var(--m3-surface) 100%);
+            border: 1px solid var(--m3-outline-variant);
+            border-radius: 20px;
+            padding: 24px;
         }
 
         /* Enhanced Payment Method Styles */
@@ -446,7 +468,7 @@
         .payment-label {
             display: flex;
             align-items: center;
-            padding: 12px; /* Reduced padding */
+            padding: 12px;
             transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             border-radius: 12px;
@@ -454,26 +476,26 @@
         }
 
         .payment-label:hover {
-            background-color: var(--google-grey-50);
+            background-color: var(--m3-surface-variant);
         }
 
         .payment-radio:checked + .payment-label {
-            background-color: var(--google-blue-50);
-            box-shadow: inset 0 0 0 2px var(--google-blue-600);
+            background-color: var(--m3-primary-container);
+            box-shadow: inset 0 0 0 2px var(--m3-primary);
         }
 
         .payment-logo {
-            height: 22px; /* Reduced height */
+            height: 24px;
             width: auto;
             max-width: 70px;
             object-fit: contain;
-            margin-right: 12px; /* Reduced margin */
+            margin-right: 16px;
         }
 
         .custom-radio-button {
             height: 20px;
             width: 20px;
-            border: 2px solid var(--google-grey-300);
+            border: 2px solid var(--m3-outline);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -484,60 +506,63 @@
         }
 
         .custom-radio-button .dot {
-            height: 8px;
-            width: 8px;
+            height: 10px;
+            width: 10px;
             border-radius: 50%;
             background-color: transparent;
             transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: scale(0);
         }
 
         .payment-radio:checked + .payment-label .custom-radio-button {
-            border-color: var(--google-blue-600);
+            border-color: var(--m3-primary);
         }
 
         .payment-radio:checked + .payment-label .custom-radio-button .dot {
-            background-color: var(--google-blue-600);
+            background-color: var(--m3-primary);
+            transform: scale(1);
         }
 
         /* Enhanced Payment Instruction Layout */
         .payment-header {
-            background: linear-gradient(135deg, var(--google-grey-900) 0%, #1f1f23 100%);
-            color: #fff;
+            background: var(--m3-surface);
+            color: var(--m3-on-surface);
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 999;
+            border-bottom: 1px solid var(--m3-outline-variant);
         }
 
         .payment-card {
-            background-color: #ffffff;
-            border: 1px solid var(--google-grey-200);
-            border-radius: 12px;
-            padding: 16px; /* Reduced padding */
-            margin-top: 12px; /* Reduced margin */
+            background-color: var(--m3-surface);
+            border: 1px solid var(--m3-outline-variant);
+            border-radius: 16px;
+            padding: 16px;
+            margin-top: 12px;
             box-shadow: var(--shadow-1);
         }
 
         .copy-button-text {
             background: none;
             border: none;
-            color: var(--google-blue-600);
+            color: var(--m3-primary);
             font-weight: 500;
             cursor: pointer;
             padding: 8px;
-            border-radius: 4px;
+            border-radius: 8px;
             transition: background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .copy-button-text:hover {
-            background-color: var(--google-blue-50);
+            background-color: var(--m3-primary-container);
         }
 
         .confirm-button-outlined {
             width: 100%;
             padding: 12px 24px;
-            border: 2px solid var(--google-blue-600);
-            color: var(--google-blue-600);
+            border: 1px solid var(--m3-primary);
+            color: var(--m3-primary);
             background-color: transparent;
             border-radius: 24px;
             font-weight: 500;
@@ -548,12 +573,12 @@
         }
 
         .confirm-button-outlined:hover {
-            background-color: var(--google-blue-50);
+            background-color: var(--m3-primary-container);
             box-shadow: var(--shadow-1);
         }
 
         .payment-accordion {
-            border-bottom: 1px solid var(--google-grey-200);
+            border-bottom: 1px solid var(--m3-outline-variant);
         }
 
         .payment-accordion:last-child {
@@ -562,7 +587,7 @@
 
         .payment-accordion summary {
             font-weight: 500;
-            padding: 14px 0; /* Reduced padding */
+            padding: 14px 0;
             cursor: pointer;
             list-style: none;
             display: flex;
@@ -580,7 +605,7 @@
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            color: var(--google-grey-600);
+            color: var(--m3-on-surface-variant);
         }
 
         .payment-accordion[open] summary::after {
@@ -589,7 +614,7 @@
 
         .payment-accordion-content {
             padding-bottom: 16px;
-            color: var(--google-grey-600);
+            color: var(--m3-on-surface-variant);
             line-height: 1.6;
         }
 
@@ -609,7 +634,7 @@
             font-size: 1.125rem; /* 18px */
             font-weight: 500;
             font-family: 'Google Sans', sans-serif;
-            color: #ffffff; /* Ditambahkan agar teks terlihat */
+            color: var(--m3-on-surface); /* Ditambahkan agar teks terlihat */
         }
 
         .countdown-timer {
@@ -627,8 +652,8 @@
         }
 
         .countdown-number {
-            background-color: var(--google-red-600);
-            color: white;
+            background-color: var(--m3-error-container);
+            color: var(--m3-on-error-container);
             padding: 0.25rem 0.5rem;
             border-radius: 6px;
             font-weight: 600;
@@ -665,10 +690,10 @@
         }
 
         .details-modal-content {
-            background-color: #ffffff;
+            background-color: var(--m3-surface);
             width: 100%;
             max-width: 100%;
-            border-radius: 20px 20px 0 0;
+            border-radius: 28px 28px 0 0; /* M3 Bottom Sheet Radius */
             box-shadow: var(--shadow-3);
             text-align: left;
             transform: translateY(100%);
@@ -702,7 +727,7 @@
 
         .details-modal-header {
             padding: 20px 24px;
-            border-bottom: 1px solid var(--google-grey-200);
+            border-bottom: 1px solid var(--m3-outline-variant);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -711,14 +736,14 @@
         .details-modal-header h3 {
             font-size: 18px;
             font-weight: 500;
-            color: var(--google-grey-900);
+            color: var(--m3-on-surface);
             font-family: 'Google Sans', sans-serif;
         }
 
         .details-modal-close {
             font-size: 24px;
             font-weight: 400;
-            color: var(--google-grey-600);
+            color: var(--m3-on-surface-variant);
             cursor: pointer;
             background: none;
             border: none;
@@ -728,7 +753,7 @@
         }
 
         .details-modal-close:hover {
-            background-color: var(--google-grey-100);
+            background-color: var(--m3-surface-variant);
         }
 
         .details-modal-body {
@@ -870,11 +895,11 @@
 
         /* Enhanced Security Badge */
         .security-badge {
-            background: linear-gradient(135deg, var(--google-green-600) 0%, #0f7b0f 100%);
-            color: white;
-            padding: 6px 12px; /* Reduced padding */
+            background: var(--m3-tertiary-container);
+            color: var(--m3-on-tertiary-container);
+            padding: 6px 12px;
             border-radius: 20px;
-            font-size: 10px; /* Reduced font size */
+            font-size: 10px;
             font-weight: 500;
             display: inline-flex;
             align-items: center;
@@ -884,19 +909,19 @@
         /* Enhanced Typography */
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Google Sans', sans-serif;
-            color: var(--google-grey-900);
+            color: var(--m3-on-surface);
         }
 
         .text-google-blue {
-            color: var(--google-blue-600);
+            color: var(--google-blue);
         }
 
         .text-google-green {
-            color: var(--google-green-600);
+            color: var(--google-green);
         }
 
         .bg-google-blue {
-            background-color: var(--google-blue-600);
+            background-color: var(--google-blue);
         }
 
         /* Smooth Scrolling */
@@ -929,17 +954,14 @@
     <div id="payment-instruction-container">
         <!-- Konten akan di-generate oleh JavaScript -->
     </div>
-    <!-- Reduced main container padding -->
-    <div class="p-2 sm:p-4 lg:p-6">
+    <!-- Spacing adjustments for mobile and desktop -->
+    <div class="p-3 sm:p-4 lg:p-8">
         <div id="main-content-container">
-             <!-- Reduced grid gap -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-6 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-x-12 gap-y-8 max-w-7xl mx-auto">
                 <!-- Kolom Kiri: Form & Pembayaran -->
-                <!-- Reduced card padding -->
-                <div class="lg:col-span-1 material-card p-4 md:p-6">
+                <div class="lg:col-span-1 material-card p-5 md:p-8">
                     <!-- Header Keamanan -->
-                    <!-- Reduced padding and margin -->
-                    <div class="grid grid-cols-2 gap-2 text-center border-b border-gray-200 pb-4 mb-6">
+                    <div class="grid grid-cols-2 gap-3 text-center border-b border-m3-outline-variant pb-4 mb-4">
                         <div class="flex">
                             <div class="security-badge w-full justify-center">
                                 <i class="fas fa-shield-alt text-xs mr-1"></i>
@@ -947,7 +969,7 @@
                             </div>
                         </div>
                         <div class="flex">
-                            <div class="security-badge w-full justify-center" style="background: linear-gradient(135deg, var(--google-blue-600) 0%, #1557b0 100%);">
+                            <div class="security-badge w-full justify-center" style="background: var(--m3-primary-container); color: var(--m3-on-primary-container);">
                                 <i class="fas fa-hand-holding-usd text-xs mr-1"></i>
                                 GARANSI UANG KEMBALI
                             </div>
@@ -955,9 +977,8 @@
                     </div>
                     
                     <!-- Pemilihan Paket (Segmented Control) -->
-                    <!-- Reduced margin -->
-                    <div class="mb-6">
-                        <h2 class="text-lg font-bold mb-4 text-gray-800 google-sans">1. Pilih Paket Anda</h2>
+                    <div class="my-6">
+                        <h2 class="text-lg font-bold mb-3 google-sans">1. Pilih Paket Anda</h2>
                         <div id="package-selection">
                             <div class="segmented-control">
                                 <input type="radio" id="pkg-drive" name="package" value="drive" class="package-radio" checked>
@@ -982,19 +1003,18 @@
 
                     <!-- Form -->
                     <form id="orderForm">
-                        <h2 class="text-lg font-bold mb-4 text-gray-800 google-sans">2. Lengkapi Data</h2>
-                        <!-- Reduced form spacing -->
+                        <h2 class="text-lg font-bold mb-3 google-sans">2. Lengkapi Data</h2>
                         <div class="space-y-4">
                             <div>
-                                <label for="nama" class="block text-sm font-medium mb-1 text-gray-700">Nama Anda <span class="text-red-500">*</span></label>
+                                <label for="nama" class="block text-sm font-medium mb-1.5 text-m3-on-surface-variant">Nama Anda <span class="text-red-500">*</span></label>
                                 <input type="text" id="nama" name="nama" class="form-input" placeholder="Masukkan nama lengkap Anda">
                             </div>
                             <div>
-                                <label for="whatsapp" class="block text-sm font-medium mb-1 text-gray-700">No. WhatsApp Anda <span class="text-red-500">*</span></label>
+                                <label for="whatsapp" class="block text-sm font-medium mb-1.5 text-m3-on-surface-variant">No. WhatsApp Anda <span class="text-red-500">*</span></label>
                                 <input type="tel" id="whatsapp" name="whatsapp" class="form-input" placeholder="Contoh: 081234567890">
                             </div>
                             <div>
-                                <label for="email" class="block text-sm font-medium mb-1 text-gray-700">Gmail Anda <span class="text-red-500">*</span></label>
+                                <label for="email" class="block text-sm font-medium mb-1.5 text-m3-on-surface-variant">Gmail Anda <span class="text-red-500">*</span></label>
                                 <input type="email" id="email" name="email" class="form-input" placeholder="contoh.email@gmail.com">
                             </div>
                         </div>
@@ -1003,13 +1023,12 @@
                         <input type="text" name="honeypot" style="display: none" tabindex="-1" autocomplete="off">
 
                         <!-- Metode Pembayaran -->
-                        <!-- Reduced margin -->
-                        <div id="payment-method-selection" class="mt-8"></div>
+                        <div id="payment-method-selection" class="mt-6"></div>
                         
                         <!-- Rincian Pesanan -->
-                        <div id="order-details-in-form" class="mt-8"></div>
+                        <div id="order-details-in-form" class="mt-6"></div>
                         
-                        <button type="button" id="submit-btn" class="cta-button blue-button mt-8">
+                        <button type="button" id="submit-btn" class="cta-button blue-button mt-6">
                             <i class="fas fa-shopping-cart mr-2"></i>
                             Beli Sekarang
                         </button>
@@ -1019,18 +1038,17 @@
                 <!-- Kolom Kanan: Testimoni, FAQ, Kebijakan -->
                 <div class="lg:col-span-1 py-4 space-y-8">
                    <div id="testimonials-full"></div>
-                   <div class="material-card p-4 md:p-6">
+                   <div class="material-card p-5 md:p-6">
                        <div id="faq-full"></div>
                    </div>
-                   <div class="material-card p-4 md:p-6">
+                   <div class="material-card p-5 md:p-6">
                        <div id="policy-full"></div>
                    </div>
                 </div>
             </div>
         </div>
         
-        <!-- Reduced margin -->
-        <footer id="footer" class="text-center mt-12 text-gray-500 text-sm">
+        <footer id="footer" class="text-center mt-8 text-m3-on-surface-variant text-sm">
             <p>Copyright © <span id="currentYear">2025</span> InDrive ID. Semua Hak Dilindungi.</p>
         </footer>
     </div>
@@ -1257,14 +1275,14 @@
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between">
                     <div class="text-center mb-4 md:mb-0 flex-grow">
                         ${logoHtml}
-                        <h1 class="text-2xl font-bold text-gray-800 mt-3 google-sans">${pkg.title}</h1>
-                        <p class="text-md text-gray-600 mt-1">${pkg.description}</p>
+                        <h1 class="text-2xl font-bold text-m3-on-primary-container mt-3 google-sans">${pkg.title}</h1>
+                        <p class="text-md text-m3-on-surface-variant mt-1">${pkg.description}</p>
                     </div>
                     <div class="text-center md:text-right mt-4 md:mt-0 md:pl-6">
                         <div class="text-4xl font-bold text-google-blue google-sans">${pkg.priceDisplay}</div>
-                        <p class="text-gray-500 text-sm mt-1">Sekali Bayar Seumur Hidup</p>
+                        <p class="text-sm text-m3-on-surface-variant mt-1">Sekali Bayar Seumur Hidup</p>
                         <div class="mt-2">
-                            <span class="inline-block bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">
+                            <span class="inline-block bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full" style="background-color: var(--m3-secondary-container); color: var(--m3-on-secondary-container);">
                                 <i class="fas fa-infinity mr-1"></i>
                                 Unlimited Storage
                             </span>
@@ -1330,21 +1348,21 @@
         };
 
         const getOrderDetailsHTML = (pkg, totalPrice) => `
-            <div class="mt-8 pt-6 border-t border-gray-200">
-                 <h3 class="text-lg font-bold mb-4 text-gray-800 google-sans">Rincian Pesanan</h3>
-                 <div class="material-card-elevated p-4 rounded-2xl space-y-3 text-gray-600">
+            <div class="mt-8 pt-6 border-t border-m3-outline-variant">
+                 <h3 class="text-lg font-bold mb-4 google-sans">Rincian Pesanan</h3>
+                 <div class="material-card-elevated p-4 rounded-2xl space-y-3 text-m3-on-surface-variant">
                      <div class="flex justify-between items-center">
                          <span class="text-sm">${pkg.name}</span>
                          <div class="text-right">
-                             <span class="font-semibold text-gray-800 text-md">${formatCurrency(pkg.price)}</span>
+                             <span class="font-semibold text-m3-on-surface text-md">${formatCurrency(pkg.price)}</span>
                          </div>
                      </div>
                      <div class="flex justify-between">
                          <span class="text-xs">Kode Unik</span>
-                         <span class="font-medium text-gray-800 text-sm">${formatCurrency(uniqueCode)}</span>
+                         <span class="font-medium text-m3-on-surface text-sm">${formatCurrency(uniqueCode)}</span>
                      </div>
-                     <hr class="my-2 border-gray-200">
-                     <div class="flex justify-between font-bold text-lg text-gray-900 google-sans">
+                     <hr class="my-2 border-m3-outline-variant">
+                     <div class="flex justify-between font-bold text-lg text-m3-on-surface google-sans">
                          <span>Total</span>
                          <span class="text-google-blue">${formatCurrency(totalPrice)}</span>
                      </div>
@@ -1358,8 +1376,8 @@
 
             return `
             <div class="material-card p-4 md:p-6 rounded-2xl">
-                <h2 class="text-2xl font-bold text-center mb-4 text-gray-800 google-sans">Testimoni Pelanggan</h2>
-                <p class="text-center text-gray-600 text-sm mb-6">Ribuan pelanggan telah merasakan manfaat penyimpanan unlimited</p>
+                <h2 class="text-2xl font-bold text-center mb-4 google-sans">Testimoni Pelanggan</h2>
+                <p class="text-center text-m3-on-surface-variant text-sm mb-6">Ribuan pelanggan telah merasakan manfaat penyimpanan unlimited</p>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                     ${imagesHTML}
                 </div>
@@ -1368,7 +1386,7 @@
 
         const getFaqHTML = () => `
              <div>
-                 <h3 class="text-2xl font-bold mb-4 text-center text-gray-800 google-sans">Pertanyaan Umum (FAQ)</h3>
+                 <h3 class="text-2xl font-bold mb-4 text-center google-sans">Pertanyaan Umum (FAQ)</h3>
                  <div class="space-y-1">
                      <details class="faq-item">
                          <summary>Apakah ini benar-benar unlimited dan seumur hidup?</summary>
@@ -1408,10 +1426,10 @@
         
         const getPolicyHTML = () => `
             <div>
-                <h3 class="text-2xl font-bold mb-4 text-center text-gray-800 google-sans">Kebijakan & Ketentuan</h3>
-                <div class="grid md:grid-cols-1 gap-6 text-sm text-gray-600">
+                <h3 class="text-2xl font-bold mb-4 text-center google-sans">Kebijakan & Ketentuan</h3>
+                <div class="grid md:grid-cols-1 gap-6 text-sm text-m3-on-surface-variant">
                     <div class="mb-6">
-                        <h4 class="text-lg font-bold mb-3 text-gray-800 google-sans">Kebijakan Privasi</h4>
+                        <h4 class="text-lg font-bold mb-3 google-sans">Kebijakan Privasi</h4>
                         <p class="mb-4 text-sm leading-relaxed">Informasi yang Anda berikan (alamat email Google) hanya digunakan untuk keperluan upgrade dan komunikasi terkait pesanan. Kami <strong>tidak pernah</strong> meminta atau menyimpan kata sandi Anda. Semua file Anda tetap sepenuhnya pribadi di bawah kendali Anda dan kebijakan Google.</p>
                         <ul class="list-disc list-inside space-y-2 text-sm">
                             <li>Kami hanya butuh email, bukan password.</li>
@@ -1421,7 +1439,7 @@
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-lg font-bold mb-3 text-gray-800 google-sans">Syarat & Ketentuan</h4>
+                        <h4 class="text-lg font-bold mb-3 google-sans">Syarat & Ketentuan</h4>
                          <p class="mb-4 text-sm leading-relaxed">Dengan menggunakan layanan ini, Anda setuju untuk terikat pada S&K kami. Layanan ini adalah pembayaran satu kali untuk manfaat seumur hidup, tunduk pada kebijakan Google yang berlaku.</p>
                         <ul class="list-disc list-inside space-y-2 text-sm">
                             <li>Layanan untuk penggunaan wajar dan tidak melanggar hukum.</li>
