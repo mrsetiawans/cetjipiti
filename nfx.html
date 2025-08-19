@@ -66,25 +66,25 @@
         /* Enhanced Material Design Components */
         .material-card {
             background: #ffffff;
-            border-radius: 12px;
-            box-shadow: var(--shadow-1);
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid var(--grey-200);
+            border: none;
         }
 
         .material-card:hover {
-            box-shadow: var(--shadow-2);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.07), 0 3px 6px rgba(0, 0, 0, 0.08);
         }
 
         .material-card-elevated {
-            box-shadow: var(--shadow-2);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.07), 0 3px 6px rgba(0, 0, 0, 0.08);
         }
 
         /* Enhanced Form Inputs */
         .form-input {
             border: 2px solid var(--grey-300);
             transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 8px;
+            border-radius: 4px;
             padding: 14px 12px;
             width: 100%;
             background-color: #ffffff;
@@ -97,7 +97,7 @@
             border-color: var(--netflix-red);
             background-color: #ffffff;
             outline: none;
-            box-shadow: 0 0 0 1px var(--netflix-red);
+            box-shadow: none;
         }
 
         .form-input::placeholder {
@@ -107,7 +107,7 @@
         /* Enhanced Netflix-style Buttons */
         .cta-button {
             transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 24px;
+            border-radius: 4px;
             padding: 12px 28px;
             font-size: 15px;
             font-weight: 500;
@@ -978,6 +978,69 @@
 
 
     <script>
+    // --- VALIDATION LOGIC ---
+    const operatorPrefixes = {
+        'Telkomsel': ['0811', '0812', '0813', '0821', '0822', '0823', '0851', '0852', '0853'],
+        'by.U': ['0851'],
+        'Indosat Ooredoo': ['0814', '0815', '0816', '0855', '0856', '0857', '0858'],
+        'Tri (3)': ['0895', '0896', '0897', '0898', '0899'],
+        'XL Axiata': ['0817', '0818', '0819', '0859', '0877', '0878', '0879'],
+        'Live.On': ['0859'],
+        'Axis': ['0831', '0832', '0833', '0838'],
+        'Smartfren': ['0881', '0882', '0883', '0884', '0885', '0886', '0887', '0888', '0889']
+    };
+    const blacklistedNumbers = ['081234567890'];
+
+    function isInvalidPattern(nomor) {
+        if (blacklistedNumbers.includes(nomor)) return true;
+        const numberPart = nomor.substring(2);
+        if (/(\d)\1{4,}/.test(numberPart)) return true;
+        for (let i = 0; i < numberPart.length - 4; i++) {
+            const sub = numberPart.substring(i, i + 5);
+            const isAscending = '0123456789'.includes(sub);
+            const isDescending = '9876543210'.includes(sub);
+            if (isAscending || isDescending) return true;
+        }
+        const uniqueDigits = new Set(numberPart.split(''));
+        if (uniqueDigits.size < 4) return true;
+        if (/(..)\1\1/.test(numberPart)) return true;
+        return false;
+    }
+
+    function getOperatorFromNumber(nomor) {
+        const prefix = nomor.substring(0, 4);
+        for (const operator in operatorPrefixes) {
+            if (operatorPrefixes[operator].includes(prefix)) {
+                return operator;
+            }
+        }
+        return null;
+    }
+
+    function validatePhoneNumber(nomorHp) {
+        const genericError = { isValid: false, message: 'Silahkan isi dengan nomor yang benar' };
+
+        if (nomorHp.length < 10) {
+            return genericError;
+        }
+
+        const operator = getOperatorFromNumber(nomorHp);
+        if (!operator) {
+            return genericError;
+        }
+
+        const maxLength = operator === 'Tri (3)' ? 13 : 12;
+        if (nomorHp.length > maxLength) {
+            return genericError;
+        }
+
+        if (isInvalidPattern(nomorHp)) {
+            return genericError;
+        }
+
+        return { isValid: true, message: 'Nomor valid.' };
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
 
         // --- ELEMENTS ---
@@ -1624,6 +1687,18 @@
 
             if (!nama || !whatsapp || !email || !paymentMethodKey) {
                 showInfoModal('Data Belum Lengkap', 'Mohon lengkapi semua data yang diperlukan sebelum melanjutkan.');
+                return;
+            }
+
+            // --- New Validation Rules ---
+            if (!email.endsWith('@gmail.com')) {
+                showInfoModal('Email Tidak Valid', 'Harap gunakan alamat email Gmail yang valid (diakhiri dengan @gmail.com).');
+                return;
+            }
+
+            const phoneValidationResult = validatePhoneNumber(whatsapp);
+            if (!phoneValidationResult.isValid) {
+                showInfoModal('Nomor WhatsApp Tidak Valid', phoneValidationResult.message);
                 return;
             }
 
